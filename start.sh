@@ -1,4 +1,5 @@
 #!/bin/bash
+docker compose down
 ./mvnw clean install
 cd service1
 docker build -t service1 .

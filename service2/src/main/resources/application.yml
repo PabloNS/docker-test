@@ -1,2 +1,4 @@
 server:
   port: 8081
+kafka:
+  url: kafka:9092
