@@ -1,9 +1,14 @@
 server:
   port: 8081
 kafka:
-  url: kafka:9092
+  topic:
+    name: topic1
 spring:
   data:
     mongodb:
       host: mongo
       port: 27017
+  kafka:
+    bootstrap-servers: "kafka:9092"
+    consumer:
+      group-id: "group1"

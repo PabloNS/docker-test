@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface Entity1Repository extends CrudRepository<Entity1, Long> {
+public interface PostgresEntityRepository extends CrudRepository<PostgresEntity, Long> {
 
-    Optional<Entity1> findById(Long id);
+    Optional<PostgresEntity> findById(Long id);
 }

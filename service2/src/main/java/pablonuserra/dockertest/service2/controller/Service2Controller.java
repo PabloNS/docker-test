@@ -25,7 +25,7 @@ public class Service2Controller {
         return messageEntityRepository.findAll();
     }
 
-    @KafkaListener(topics = "topic1", groupId = "group1")
+    @KafkaListener(topics = "${kafka.topic.name}")
     public void listenGroup1(String message) {
         messageEntityRepository.save(MessageEntity.builder().message(message).build());
     }

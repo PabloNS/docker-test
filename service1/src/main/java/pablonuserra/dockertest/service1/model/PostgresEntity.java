@@ -8,15 +8,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "Entity1")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Entity1 {
+public class PostgresEntity {
 
     @Id
     @GeneratedValue
