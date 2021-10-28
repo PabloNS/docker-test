@@ -1,4 +1,4 @@
-package pablonuserra.dockertest.service1;
+package pablonuserra.dockertest.service1.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

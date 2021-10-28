@@ -1,4 +1,4 @@
-package pablonuserra.dockertest.service1;
+package pablonuserra.dockertest.service1.config;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
