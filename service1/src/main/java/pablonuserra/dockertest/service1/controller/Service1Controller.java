@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pablonuserra.dockertest.service1.model.PostgresEntity;
 import pablonuserra.dockertest.service1.model.PostgresEntityRepository;
+import pablonuserra.dockertest.service1.service.Service1Service;
 
 @RestController
 @Slf4j
@@ -25,6 +26,9 @@ public class Service1Controller {
     @Autowired
     private PostgresEntityRepository entity1Repository;
 
+    @Autowired
+    private Service1Service service1Service;
+
     @Value("${kafka.topic.name}")
     private String topicName;
 
@@ -34,7 +38,7 @@ public class Service1Controller {
 
     @GetMapping("/sendMessage")
     public String sendMessage(){
-        kafkaTemplate.send(topicName, "Hello from service1 #" + ++messagesCount);
+        kafkaTemplate.send(topicName, "Message sent from service1 #" + ++messagesCount);
         return "Message sent!";
     }
 
@@ -46,9 +50,7 @@ public class Service1Controller {
     }
 
     @GetMapping("/entity/{id}")
-    public PostgresEntity createEntity(@PathVariable("id") Long id){
-        return entity1Repository.findById(id).orElseGet(() -> {
-            logger.error("Entity1 with id {} doesn't exist", id);
-            return null; });
+    public PostgresEntity getEntity(@PathVariable("id") Long id){
+        return service1Service.getEntity(id);
     }
 }
