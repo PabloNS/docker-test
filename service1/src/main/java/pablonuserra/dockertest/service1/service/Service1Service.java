@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import pablonuserra.dockertest.service1.model.PostgresEntity;
@@ -34,7 +35,9 @@ public class Service1Service {
         return "Message sent!";
     }
 
+    @Cacheable(value = "postGresEntityCache")
     public PostgresEntity getEntity(Long id){
+        logger.info("NOT CACHED YET!");
         return entity1Repository.findById(id).orElseGet(() -> {
             logger.error("Entity1 with id {} doesn't exist", id);
             return null; });

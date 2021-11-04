@@ -39,6 +39,11 @@ services:
     restart: always
     ports:
       - 27017:27017
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
   service1:
     image: service1:latest
     build: ./service1
@@ -48,6 +53,7 @@ services:
     depends_on:
       - kafka
       - postgres
+      - redis
   service2:
     image: service2:latest
     build: ./service2
