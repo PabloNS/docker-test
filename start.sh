@@ -1,4 +1,4 @@
 #!/bin/bash
 docker compose down
-./mvnw clean package
+./mvnw clean install
 docker compose up -d
